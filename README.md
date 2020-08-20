@@ -4,5 +4,4 @@
 
 ## 목록
 
-###[Git](./Git/)
-
+#### [Git](./Git/) - Git 기본 command 및 markdown(typora) 사용법
