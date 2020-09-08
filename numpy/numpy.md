@@ -646,3 +646,53 @@ print(np.sort(arr)) # 오름차순으로 정렬 (default가 오름차순)
 print(np.sort(arr)[::-1])	# [9 8 7 6 5 4 3 2 1 0]
 ```
 
+
+
+## numpy 요소 추가, 삭제
+
+#### 1. `concatenate()`
+
+* `python` `list` 사용할때 원소를 추가하려면 => `append()`
+* `ndarray`를 쓸 때 원소를 추가할 때 보통 => `concatenate()`
+
+``` python
+import numpy as np
+
+arr = np.array([[1,2,3],[4,5,6]])
+new_row = np.array([7,8,9])
+
+# arr에 new_row vector를 행으로 붙임
+
+result = np.concatenate((arr,new_row.reshape(1,3)),axis=0)
+print(result)			# [[1 2 3]
+ 						# [4 5 6]
+						# [7 8 9]]
+```
+
+
+
+#### 2. `delete()`
+
+* `axis`를 기준으로 행과 열을 삭제 가능
+* 만약 `axis`를 지정하지 않으면 1차원배열로 변환 후 삭제
+
+* 원본은 변경하지 않고 처리가 된 새로운 배열을 return
+
+``` python
+import numpy as np
+
+np.random.seed(1)
+
+arr = np.random.randint(0,10,(3,4))
+print(arr)					# [[5 8 9 5]
+							# [0 0 1 7]
+							# [6 9 2 4]]
+
+result = np.delete(arr,1) 	# axis가 설정되지 않았기 때문에 1차원배열로 변환 후 1번 인덱스 삭제
+print(result)             	# [5 9 5 0 0 1 7 6 9 2 4]
+
+result = np.delete(arr, 1, axis=0) 
+print(result)               # [[5 8 9 5]
+                            #  [6 9 2 4]]
+```
+
